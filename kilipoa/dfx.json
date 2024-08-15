@@ -1,0 +1,38 @@
+{
+  "canisters": {
+    "kilipoa_backend": {
+      "build": "npx azle kilipoa_backend",
+      "candid": "src/kilipoa_backend/kilipoa_backend.did",
+      "gzip": true,
+      "main": "src/kilipoa_backend/src/index.ts",
+      "tech_stack": {
+        "cdk": {
+          "azle": {}
+        },
+        "language": {
+          "typescript": {}
+        }
+      },
+      "type": "custom",
+      "wasm": ".azle/kilipoa_backend/kilipoa_backend.wasm"
+    },
+    "kilipoa_frontend": {
+      "dependencies": [
+        "kilipoa_backend"
+      ],
+      "source": [
+        "src/kilipoa_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "kilipoa_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
