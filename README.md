@@ -18,7 +18,7 @@ The **Kilimani POA App** is a community engagement platform designed to enable r
 Janice M.
 Prisha P.
 Judith K.
-Veronice N.
+Rebecca N.
 ## Features
 
 ### 1. **Proposal Submission**
