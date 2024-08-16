@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "kilipoa_backend": {
+      "main": "src/kilipoa_backend/main.mo",
+      "type": "motoko"
+    },
+    "kilipoa_frontend": {
+      "dependencies": [
+        "kilipoa_backend"
+      ],
+      "source": [
+        "src/kilipoa_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "kilipoa_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
