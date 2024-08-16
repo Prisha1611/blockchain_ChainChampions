@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kilimani POA App - Upload</title>
+    <link rel="stylesheet" href="css/upload-styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <i class="fas fa-bars"></i> <!-- Hamburger Menu Icon -->
+                <div class="nav-icons">
+                    <i class="fas fa-bell"></i> <!-- Bell Icon -->
+                    <i class="fas fa-share-alt"></i> <!-- Share Icon -->
+                    <i class="fas fa-search"></i> <!-- Search Icon -->
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="logo">
+                <img src="images/kilimani-logo.png" alt="Kilimani Logo" class="logo-image">
+            </div>
+            <h2 class="upload-heading">Upload an image</h2>
+            <div class="image-upload">
+                <label for="file-input">
+                    <img id="upload-preview" src="images/upload-image.png" alt="Upload Preview">
+                    <p>Click to upload an image</p>
+                </label>
+                <input id="file-input" type="file" accept="image/*" onchange="previewImage(event)">
+            </div>
+            
+            <div class="upload-info">
+                <p><strong>Proposal:</strong> Tree Planting near Prestige Mall</p>
+                <p><strong>ID:</strong> <span id="proposal-id">ID-XXX</span></p>
+                <p><strong>Time:</strong> 8/15/2024, 8:48:08 PM</p>
+            </div>
+            
+            
+            <button id="submit-btn" class="submit-btn" onclick="submitProposal()" disabled>Submit</button>
+            
+            <!-- Popup message -->
+            <div id="popup" class="popup hidden">
+                <p>Submitted, awaiting validation</p>
+                <button onclick="closePopup()">Close</button>
+            </div>
+            
+
+    <script src="js-scripts/upload-script.js"></script>
+</body>
+</html>

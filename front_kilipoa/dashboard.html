@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="sidebar">
+        <button id="sidebar-toggle" class="toggle-btn">&#9776;</button>
+        <div class="logo">Dashboard</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Token</a></li>
+            <li><a href="#">Friends</a></li>
+            <li><a href="#">Scan</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Welcome to the Dashboard</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+            </div>
+        </header>
+        <div class="id-section">
+            <h4>ID:</h4>
+            <p>123456789</p>
+        </div>
+        <div class="content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pick Up Date</th>
+                        <th>Status</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2024-08-15</td>
+                        <td>Validating</td>
+                        <td>Proposal</td>
+                    </tr>
+                    <tr>
+                        <td>2024-08-16</td>
+                        <td>Approved</td>
+                        <td>Final</td>
+                    </tr>
+                    <!-- More rows as needed -->
+                </tbody>
+            </table>
+            <div class="card">
+                <h3>Card Title</h3>
+                <p>Card content goes here.</p>
+            </div>
+            <div class="card">
+                <h3>Card Title</h3>
+                <p>Card content goes here.</p>
+            </div>
+        </div>
+    </div>
+    <script src="js-scripts/dashboard.js"></script>
+</body>
+</html>

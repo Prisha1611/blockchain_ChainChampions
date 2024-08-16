@@ -1,0 +1,155 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #faf5f3;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.voting-container {
+    max-width: 400px;
+    margin: auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 24px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-details h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.user-details p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.proposal-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.proposal-info img {
+    width: 100%;
+    border-radius: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.proposal-info h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #416651;
+}
+
+.comments-section {
+    margin-bottom: 20px;
+}
+
+.comment {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.comment-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comment p {
+    margin: 0;
+}
+
+.voting-results {
+    background-color: #416651;
+    padding: 10px;
+    border-radius: 24px;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.voting-results h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+}
+
+
+.votes {
+    font-weight: bold;
+}
+
+
+.vote-option {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 16px;
+    cursor: pointer; /* Makes the entire area clickable */
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.vote-option i {
+    margin-left: 5px;
+    font-size: 20px; /* Increase the size of the icons */
+}
+
+.footer-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+}
+
+.message-input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 24px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+}
+
+.send-btn, .like-btn {
+    background-color: #e1705d;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.send-btn:hover, .like-btn:hover {
+    background-color: #d0594a;
+}
+

@@ -1,0 +1,252 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #faf5f3; /* Light Orange Background */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes up the full height of the viewport */
+}
+
+.container {
+    max-width: 400px;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 24px; /* Corner rounding matching your design */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    flex-grow: 1; /* Allow the container to grow and fill available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align elements at the top */
+    position: relative;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-icons {
+    display: flex;
+    gap: 10px; /* Reduce gap between icons */
+}
+
+.nav-icons i {
+    font-size: 16px; /* Make icons smaller */
+    cursor: pointer;
+    color: #30655c;
+}
+
+.nav-icons i:hover {
+    color: #e1705d; /* Orange on hover */
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0px; /* Reduced space at the top */
+    margin-bottom: 0px; /* Reduced space below */
+    padding: 0; /* Remove any padding that might be causing extra space */
+}
+
+.logo img {
+    width: 200%; /* Adjust as needed */
+    max-width: 250px; /* Ensure the logo doesn’t get too large */
+    height: auto;
+    margin: 0; /* Ensure no extra margin on the image itself */
+    padding: 0; /* Ensure no extra padding on the image itself */
+}
+
+header {
+    margin-bottom: 0px; /* Reduce any space under the header */
+}
+
+main {
+    margin-top: 0px; /* Reduce any space above the main content */
+}
+
+
+h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-top: 30px; /* Adjusted to account for the space needed below the logo */
+}
+
+.proposal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.proposal-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 24px; /* Corner rounding matching your design */
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    border: 1px solid transparent;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for 3D effect */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.proposal-btn i {
+    margin-right: 10px;
+    font-size: 18px;
+    color: inherit; /* Make sure the icons inherit the text color */
+}
+
+.orange {
+    background-color: #faf5f3; /* Light Orange */
+    color: #e1705d; /* Text color */
+    border: 1px solid #e1705d; /* Border color */
+}
+
+.green {
+    background-color: #daede2; /* Light Green */
+    color: #416651; /* Text color */
+    border: 1px solid #416651; /* Border color */
+}
+
+.proposal-btn:hover {
+    transform: translateY(-4px); /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Darken the shadow */
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 24px; /* Corner rounding matching your design */
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+input[type="text"]::placeholder {
+    color: #416651; /* Dark Green */
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ask-ai-btn, .next-btn {
+    padding: 10px 20px;
+    border-radius: 24px; /* Corner rounding matching your design */
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    flex-grow: 1;
+    margin: 0 5px;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for 3D effect */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ask-ai-btn {
+    background-color: #daede2; /* Light Green */
+    color: #416651; /* Dark Green */
+}
+
+.next-btn {
+    background-color: #e1705d; /* Orange */
+}
+
+.ask-ai-btn:hover, .next-btn:hover {
+    transform: translateY(-4px); /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Darken the shadow */
+}
+
+
+.image-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#upload-preview {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for 3D effect */
+    cursor: pointer;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.upload-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.submit-btn {
+    padding: 10px 20px;
+    border-radius: 24px; /* Corner rounding matching your design */
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    color: white;
+    background-color: #e1705d; /* Orange background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for 3D effect */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: fit-content; /* Makes the button width adapt to the text */
+    margin: 0 auto; /* Center the button horizontally */
+    display: block; /* Ensure the button is treated as a block-level element */
+}
+
+.submit-btn:hover {
+    transform: translateY(-4px); /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Darken the shadow */
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 500px) {
+    .container {
+        max-width: 95%;
+        padding: 15px;
+    }
+    
+    .logo h1 {
+        font-size: 20px;
+    }
+    
+    h2 {
+        font-size: 16px;
+    }
+    
+    .proposal-btn {
+        font-size: 12px;
+        padding: 12px;
+    }
+    
+    .ask-ai-btn, .next-btn {
+        font-size: 12px;
+        padding: 10px;
+    }
+}
+
+
+

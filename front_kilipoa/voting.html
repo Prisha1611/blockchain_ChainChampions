@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kilimani POA App - Voting</title>
+    <link rel="stylesheet" href="css/voting-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="voting-container">
+        <header>
+            <div class="user-info">
+                <img src="images/image1.png" alt="User Profile" class="profile-pic">
+                <div class="user-details">
+                    <h3>Jaylen Macharia</h3>
+                    <p>Id: 1001-456</p>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="proposal-info">
+                <img src="images/planttree.png" alt="Plant Trees" class="proposal-img">
+                <h2>Proposal Id: ID-XXX : Tree Planting near Prestige Mall</h2>
+            </div>
+
+            <div class="comments-section" id="comments-section">
+                <div class="comment">
+                    <img src="images/image2.png" alt="Janice Mugure" class="comment-pic">
+                    <div>
+                        <strong>Janice Mugure</strong>
+                        <p>Love the idea 😎</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <img src="images/image3.png" alt="Janice Mugure" class="comment-pic">
+                    <div>
+                        <strong>Prisha Patel</strong>
+                        <p>Nicee 😎</p>
+                    </div>
+                </div>
+                <!-- New messages will be appended here -->
+            </div>
+
+            <div class="voting-results">
+                <h3>Voting Result</h3>
+                <div class="vote-option" onclick="vote('up')">
+                    <p>Plant trees <i class="fas fa-thumbs-up"></i></p>
+                    <p class="votes" id="up-vote-count">0</p>
+                </div>
+                <div class="vote-option" onclick="vote('down')">
+                    <p>No trees needed <i class="fas fa-thumbs-down"></i></p>
+                    <p class="votes" id="down-vote-count">0</p>
+                </div>
+            </div>
+            
+        </main>
+
+        <footer>
+            <div class="footer-buttons">
+                <input type="text" id="message-input" placeholder="Insert Your Message" class="message-input">
+                <button class="send-btn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+                <button class="like-btn" onclick="likeMessage()"><i class="fas fa-heart"></i></button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js-scripts/voting.js"></script>
+</body>
+</html>
