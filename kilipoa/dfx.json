@@ -4,7 +4,6 @@
       "main": "src/kilipoa_backend/main.mo",
       "type": "motoko"
     },
-
     "kilipoa_frontend": {
       "dependencies": [
         "kilipoa_backend"
@@ -14,6 +13,12 @@
       ],
       "type": "assets",
       "workspace": "kilipoa_frontend"
+    },
+    "internet_identity": {
+      "type": "custom",
+      "wasm": "https://github.com/dfinity/internet-identity/releases/download/release-2023-11-17/internet_identity_dev.wasm.gz",
+      "candid": "https://github.com/dfinity/internet-identity/releases/download/release-2023-11-17/internet_identity.did",
+      "network": "local"
     }
   },
   "defaults": {

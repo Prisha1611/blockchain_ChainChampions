@@ -4,64 +4,55 @@ import './index.scss';
 import { Actor, HttpAgent } from "@dfinity/agent";
 import { AuthClient } from "@dfinity/auth-client";
 
-
 const app = new App();
-
-
 
 const webapp_id = process.env.WHOAMI_CANISTER_ID;
 
-// The interface of the whoami canister
 const webapp_idl = ({ IDL }) => {
-  return IDL.Service({ whoami: IDL.Func([], [IDL.Principal], ["query"]) });
+  return IDL.Service({ whoami: IDL.Func([], [IDL.Principal], ["query"]) });
 };
+
 export const init = ({ IDL }) => {
-  return [];
+  return [];
 };
 
-// Autofills the <input> for the II Url to point to the correct canister.
-document.body.onload = () => {
-    let iiUrl;
-    if (process.env.DFX_NETWORK === "local") {
-      iiUrl = `http://bd3sg-teaaa-aaaaa-qaaba-cai.localhost:4943`;
-    } else if (process.env.DFX_NETWORK === "ic") {
-      iiUrl = `https://bd3sg-teaaa-aaaaa-qaaba-cai.ic0.app`;
-    } else {
-      iiUrl = `https://bd3sg-teaaa-aaaaa-qaaba-cai.dfinity.network`;
+// Wait for the DOM content to be fully loaded before executing any scripts
+document.addEventListener("DOMContentLoaded", () => {
+  let iiUrl;
+  if (process.env.DFX_NETWORK === "local") {
+    const iiUrl = `http://localhost:4943/?canisterId=bkyz2-fmaaa-aaaaa-qaaaq-cai`;// Ensure localhost is used
+  } else if (process.env.DFX_NETWORK === "ic") {
+    iiUrl = `https://identity.ic0.app`; // Standard Internet Identity URL
+  } else {
+    iiUrl = `https://identity.dfinity.network`;
+  }
+
+  document.getElementById("iiUrl").value = iiUrl;
+
+  document.getElementById("loginBtn").addEventListener("click", async () => {
+    try {
+      const authClient = await AuthClient.create();
+
+      await new Promise((resolve, reject) => {
+        authClient.login({
+          identityProvider: iiUrl,
+          onSuccess: resolve,
+          onError: reject,
+        });
+      });
+
+      const identity = authClient.getIdentity();
+      const agent = new HttpAgent({ identity });
+      const webapp = Actor.createActor(webapp_idl, {
+        agent,
+        canisterId: webapp_id,
+      });
+
+      const principal = await webapp.whoami();
+      document.getElementById("loginStatus").innerText = principal.toText();
+    } catch (error) {
+      console.error("Login failed:", error);
+      document.getElementById("loginStatus").innerText = "Login failed. Please try again.";
     }
-    document.getElementById("iiUrl").value = iiUrl;
-  };
-  
-document.getElementById("loginBtn").addEventListener("click", async () => {
-  // When the user clicks, we start the login process.
-  // First we have to create and AuthClient.
-  const authClient = await AuthClient.create();
-
-  // Find out which URL should be used for login.
-  const iiUrl = document.getElementById("iiUrl").value;
-
-  // Call authClient.login(...) to login with Internet Identity. This will open a new tab
-  // with the login prompt. The code has to wait for the login process to complete.
-  // We can either use the callback functions directly or wrap them in a promise.
-  await new Promise((resolve, reject) => {
-    authClient.login({
-      identityProvider: iiUrl,
-      onSuccess: resolve,
-      onError: reject,
-    });
-  });
-
-  // At this point we're authenticated, and we can get the identity from the auth client:
-  const identity = authClient.getIdentity();
-  // Using the identity obtained from the auth client, we can create an agent to interact with the IC.
-  const agent = new HttpAgent({ identity });
-  // Using the interface description of our webapp, we create an actor that we use to call the service methods.
-  const webapp = Actor.createActor(webapp_idl, {
-    agent,
-    canisterId: webapp_id,
-  });
-  // Call whoami which returns the principal (user id) of the current user.
-  const principal = await webapp.whoami();
-  // show the principal on the page
-  document.getElementById("loginStatus").innerText = principal.toText();
+  });
 });
