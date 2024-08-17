@@ -1,16 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IC Hello Starter</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kilimani POA App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/proposal-styles.css">
 </head>
-
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.js"></script>
-</body>
+    <div class="container">
+        <header>
+            <nav>
+                <i class="fas fa-bars"></i> <!-- Hamburger Menu Icon -->
+                <div class="nav-icons">
+                    <i class="fas fa-bell"></i> <!-- Bell Icon -->
+                    <i class="fas fa-share-alt"></i> <!-- Share Icon -->
+                    <i class="fas fa-search"></i> <!-- Search Icon -->
+                </div>
+            </nav>
+        </header>
+        <main>
+        <div class="logo">
+            <img src="images/kilimani-logo.png" alt="Kilimani Logo" class="logo-image">
+        </div>
+            <h2>What is your proposal for Kilimani estate?</h2>
+            <div class="proposal-buttons">
+                <button class="proposal-btn orange" onclick="setProposalText('The street light near Cj’s is spoilt')">
+                    <i class="fas fa-lightbulb"></i>
+                    The street light near Cj’s is spoilt
+                </button>
+                <button class="proposal-btn green" onclick="setProposalText('Tree Planting near Prestige Mall')">
+                    <i class="fas fa-tree"></i>
+                    Tree Planting near Prestige Mall
+                </button>
+                <button class="proposal-btn green" onclick="setProposalText('New High rise building along Lenana Road')">
+                    <i class="fas fa-building"></i>
+                    New High rise building along Lenana Road
+                </button>
+                <button class="proposal-btn orange" onclick="setProposalText('Water Shortage near Riara Schools')">
+                    <i class="fas fa-tint"></i>
+                    Water Shortage near Riara Schools
+                </button>
+            </div>
+            <input type="text" id="proposal-input" placeholder="Type your proposal here">
+            <div class="action-buttons">
+                <button class="ask-ai-btn">ASK AI</button>
+                <button class="next-btn" onclick="redirectToUpload()">NEXT</button>
+            </div>
+        </main>
+    </div>
 
+    <!-- Move the Font Awesome script here -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Include other scripts after Font Awesome -->
+    <script src="js-scripts/proposal-script.js"></script>
+</body>
 </html>

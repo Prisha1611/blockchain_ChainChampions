@@ -4,6 +4,7 @@
       "main": "src/kilipoa_backend/main.mo",
       "type": "motoko"
     },
+
     "kilipoa_frontend": {
       "dependencies": [
         "kilipoa_backend"

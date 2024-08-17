@@ -1,23 +1,25 @@
 import Array "mo:base/Array";
 import HashMap "mo:base/HashMap";
 import Nat "mo:base/Nat";
-import Text "mo:base/Text";
+import Principal "mo:base/Principal";
 import Time "mo:base/Time";
 import List "mo:base/List";
 import Iter "mo:base/Iter";
 import Hash "mo:base/Hash";
 
 actor kilipoa {
+    public shared (msg) func whoami() : async Principal {
+        return msg.caller;
+    };
 
     // Types
     type ProposalId = Nat;
-    type UserId = Text;
 
     type Proposal = {
         id: ProposalId;
         title: Text;
         description: Text;
-        author: UserId;
+        author: Principal;
         createdAt: Time.Time;
         votes: Nat;
         status: ProposalStatus;
@@ -31,7 +33,7 @@ actor kilipoa {
 
     type Comment = {
         id: Nat;
-        author: UserId;
+        author: Principal;
         content: Text;
         createdAt: Time.Time;
     };
@@ -41,10 +43,10 @@ actor kilipoa {
     private stable var nextCommentId: Nat = 0;
     private var proposals = HashMap.HashMap<ProposalId, Proposal>(0, Nat.equal, Hash.hash);
     private var comments = HashMap.HashMap<ProposalId, List.List<Comment>>(0, Nat.equal, Hash.hash);
-    private var userVotes = HashMap.HashMap<UserId, List.List<ProposalId>>(0, Text.equal, Text.hash);
+    private var userVotes = HashMap.HashMap<Principal, List.List<ProposalId>>(0, Principal.equal, Principal.hash);
 
     // CRUD operations for Proposals
-    public func createProposal(title: Text, description: Text, author: UserId) : async ProposalId {
+    public func createProposal(title: Text, description: Text, author: Principal) : async ProposalId {
         let id = nextProposalId;
         nextProposalId += 1;
 
@@ -93,7 +95,7 @@ actor kilipoa {
     };
 
     // Voting system
-    public func voteForProposal(userId: UserId, proposalId: ProposalId) : async Bool {
+    public func voteForProposal(userId: Principal, proposalId: ProposalId) : async Bool {
         switch (proposals.get(proposalId)) {
             case (null) { false };
             case (?proposal) {
@@ -126,7 +128,7 @@ actor kilipoa {
     };
 
     // Comment system
-    public func addComment(proposalId: ProposalId, author: UserId, content: Text) : async Bool {
+    public func addComment(proposalId: ProposalId, author: Principal, content: Text) : async Bool {
         switch (proposals.get(proposalId)) {
             case (null) { false };
             case (?_) {
