@@ -1,0 +1,31 @@
+{
+  "canisters": {
+    "internetidentity_backend": {
+      "type": "motoko",
+      "main": "src/internetidentity_backend/main.mo",
+      "pullable": {
+        "dependencies": [],
+        "wasm_url": "https://github.com/lwshang/pullable/releases/latest/download/service.wasm",
+        "init_guide": "A natural number, e.g. 1"
+      }
+    },
+    "internetidentity_frontend": {
+      "type": "assets",
+      "source": [
+        "src/internetidentity_frontend/dist"
+      ],
+      "dependencies": [
+        "internetidentity_backend"
+      ],
+      "workspace": "internetidentity_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
