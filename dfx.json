@@ -3,10 +3,11 @@
     "internetidentity_backend": {
       "type": "motoko",
       "main": "src/internetidentity_backend/main.mo",
-      "pullable": {
-        "dependencies": [],
-        "wasm_url": "https://github.com/lwshang/pullable/releases/latest/download/service.wasm",
-        "init_guide": "A natural number, e.g. 1"
+      "wasm": ".dfx/local/canisters/internetidentity_backend/internetidentity_backend.wasm",
+      "candid": ".dfx/local/canisters/internetidentity_backend/internetidentity_backend.did",
+      "canister_id": {
+        "local": "be2us-64aaa-aaaaa-qaabq-cai",
+        "ic": "bkyz2-fmaaa-aaaaa-qaaaq-cai"
       }
     },
     "internetidentity_frontend": {
@@ -17,7 +18,25 @@
       "dependencies": [
         "internetidentity_backend"
       ],
-      "workspace": "internetidentity_frontend"
+      "canister_id": {
+        "local": "bd3sg-teaaa-aaaaa-qaaba-cai",
+        "ic": "bd3sg-teaaa-aaaaa-qaaba-cai"
+      }
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8080",
+      "type": "ephemeral",
+      "replica": {
+        "subnet_type": "application"
+      }
+    },
+    "ic": {
+      "providers": [
+        "https://ic0.app"
+      ],
+      "wallet": "br5f7-7uaaa-aaaaa-qaaca-cai"
     }
   },
   "defaults": {

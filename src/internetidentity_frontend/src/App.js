@@ -1,5 +1,6 @@
 import { html, render } from 'lit-html';
 import { internetidentity_backend } from 'declarations/internetidentity_backend';
+
 import logo from './logo2.svg';
 
 class App {

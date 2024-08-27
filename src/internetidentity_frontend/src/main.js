@@ -1,64 +1,65 @@
-import App from './App';
-import './index.scss';
-
-
-
 import { Actor, HttpAgent } from "@dfinity/agent";
 import { AuthClient } from "@dfinity/auth-client";
 
-const webapp_id = process.env.WHOAMI_CANISTER_ID;
+// Define constants
+// const internetIdentityCanisterId = 'be2us-64aaa-aaaaa-qaabq-cai'; 
+// const network = 'local'; // Update this with your actual network
 
-// The interface of the whoami canister
-const webapp_idl = ({ IDL }) => {
-  return IDL.Service({ whoami: IDL.Func([], [IDL.Principal], ["query"]) });
-};
-export const init = ({ IDL }) => {
-  return [];
-};
-
-// Autofills the <input> for the II Url to point to the correct canister.
-document.body.onload = () => {
-  let iiUrl;
-  if (process.env.DFX_NETWORK === "local") {
-    iiUrl = `http://localhost:4943/?canisterId=${process.env.II_CANISTER_ID}`;
-  } else if (process.env.DFX_NETWORK === "ic") {
-    iiUrl = `https://${process.env.II_CANISTER_ID}.ic0.app`;
-  } else {
-    iiUrl = `https://${process.env.II_CANISTER_ID}.dfinity.network`;
-  }
-  document.getElementById("iiUrl").value = iiUrl;
+// Define the interface for the webapp canister
+const webappIdl = ({ IDL }) => {
+  return IDL.Service({ whoami: IDL.Func([], [IDL.Principal], ["query"]) });
 };
 
-document.getElementById("loginBtn").addEventListener("click", async () => {
-  // When the user clicks, we start the login process.
-  // First we have to create and AuthClient.
-  const authClient = await AuthClient.create();
+// Set the Internet Identity URL based on the environment
+document.addEventListener("DOMContentLoaded", () => {
+  let iiUrl;
 
-  // Find out which URL should be used for login.
-  const iiUrl = document.getElementById("iiUrl").value;
+  if (network === "local") {
+    iiUrl = `http://localhost:8080/?canisterId=${internetIdentityCanisterId}`;
+  } else if (network === "ic") {
+    iiUrl = `https://${internetIdentityCanisterId}.ic0.app`;
+  } else {
+    iiUrl = `https://${internetIdentityCanisterId}.dfinity.network`;
+  }
 
-  // Call authClient.login(...) to login with Internet Identity. This will open a new tab
-  // with the login prompt. The code has to wait for the login process to complete.
-  // We can either use the callback functions directly or wrap them in a promise.
-  await new Promise((resolve, reject) => {
-    authClient.login({
-      identityProvider: iiUrl,
-      onSuccess: resolve,
-      onError: reject,
-    });
-  });
+  // Set the value of the hidden input
+  document.getElementById("iiUrl").value = iiUrl;
 
-  // At this point we're authenticated, and we can get the identity from the auth client:
-  const identity = authClient.getIdentity();
-  // Using the identity obtained from the auth client, we can create an agent to interact with the IC.
-  const agent = new HttpAgent({ identity });
-  // Using the interface description of our webapp, we create an actor that we use to call the service methods.
-  const webapp = Actor.createActor(webapp_idl, {
-    agent,
-    canisterId: webapp_id,
-  });
-  // Call whoami which returns the principal (user id) of the current user.
-  const principal = await webapp.whoami();
-  // show the principal on the page
-  document.getElementById("loginStatus").innerText = principal.toText();
+  // Handle the login button click
+  document.getElementById("loginBtn").addEventListener("click", async () => {
+    try {
+      // Create the AuthClient instance
+      const authClient = await AuthClient.create();
+      const iiUrl = document.getElementById("iiUrl").value;
+
+      // Start the login process
+      await new Promise((resolve, reject) => {
+        authClient.login({
+          identityProvider: iiUrl,
+          onSuccess: resolve,
+          onError: reject,
+        });
+      });
+
+      // Once logged in, retrieve the user's identity
+      const identity = authClient.getIdentity();
+      const agent = new HttpAgent({ identity });
+
+      // Define the webapp canister ID
+      const webappId = 'your-webapp-canister-id'; // Replace with your actual Canister ID
+
+      // Create the webapp actor using the defined interface
+      const webapp = Actor.createActor(webappIdl, {
+        agent,
+        canisterId: webappId,
+      });
+
+      // Call the whoami method and display the principal ID
+      const principal = await webapp.whoami();
+      document.getElementById("loginStatus").innerText = `Your Principal ID: ${principal.toText()}`;
+    } catch (error) {
+      console.error("Error during login process:", error);
+      document.getElementById("loginStatus").innerText = `Error: ${error.message}`;
+    }
+  });
 });

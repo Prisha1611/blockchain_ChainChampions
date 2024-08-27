@@ -14,5 +14,11 @@
   "type": "module",
   "workspaces": [
     "src/internetidentity_frontend"
-  ]
+  ],
+  "dependencies": {
+    "@dfinity/auth-client": "^2.0.0",
+    "@dfinity/identity": "^2.0.0",
+    "dotenv": "^16.4.5",
+    "vite": "^5.4.2"
+  }
 }
