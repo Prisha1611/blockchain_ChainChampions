@@ -1,9 +1,10 @@
 import { Actor, HttpAgent } from "@dfinity/agent";
 import { AuthClient } from "@dfinity/auth-client";
+import { internetidentity_backend } from "../../declarations/ICP/internetidentity/src/internetidentity_backend";
 
 // Define constants
-// const internetIdentityCanisterId = 'be2us-64aaa-aaaaa-qaabq-cai'; 
-// const network = 'local'; // Update this with your actual network
+const internetIdentityCanisterId = 'be2us-64aaa-aaaaa-qaabq-cai'; 
+const network = 'local'; 
 
 // Define the interface for the webapp canister
 const webappIdl = ({ IDL }) => {
@@ -44,9 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // Once logged in, retrieve the user's identity
       const identity = authClient.getIdentity();
       const agent = new HttpAgent({ identity });
-
+2
       // Define the webapp canister ID
-      const webappId = 'your-webapp-canister-id'; // Replace with your actual Canister ID
+      const webappId = 'bd3sg-teaaa-aaaaa-qaaba-cai'; // Replace with your actual Canister ID
 
       // Create the webapp actor using the defined interface
       const webapp = Actor.createActor(webappIdl, {
